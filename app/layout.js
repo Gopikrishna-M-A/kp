@@ -1,11 +1,6 @@
 import "./globals.css";
 import Navbar from "../components/Utils/Navbar";
 import Footer from "../components/Utils/Footer";
-// import { CartProvider } from "../contexts/cartContext";
-// import { WishlistProvider } from "../contexts/wishlistContext";
-import { getServerSession } from "next-auth/next";
-import { options } from "../app/api/auth/[...nextauth]/options";
-import Session from "../components/Session";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,20 +8,13 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(options);
 
   return (
     <html lang="en">
       <body>
-        <Session session={session}>
-          {/* <CartProvider> */}
-            {/* <WishlistProvider> */}
-              <Navbar session={session} />
+              <Navbar />
               {children}
               <Footer />
-            {/* </WishlistProvider> */}
-          {/* </CartProvider> */}
-        </Session>
       </body>
     </html>
   );

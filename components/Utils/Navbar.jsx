@@ -2,15 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button, Dropdown, Typography, Input, Select, Badge } from "antd";
-import { useSession, signIn, signOut } from "next-auth/react"
 
 const { Title, Text } = Typography;
 
 const Navbar = () => {
-  const { data: session } = useSession()
-  const [user, setUser] = useState(session?.user)
   const [isNavExpanded, setIsNavExpanded] = useState(false);
-
+  const user = true
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
@@ -37,7 +34,7 @@ const Navbar = () => {
       key: '3',
       danger: true,
       label: (
-        <div onClick={signOut} rel="noopener noreferrer" >
+        <div  rel="noopener noreferrer" >
          Sign out
         </div>
       ),
@@ -57,7 +54,7 @@ const Navbar = () => {
           <div className=" flex gap-8 mr-3">
           </div>
           {!user && (
-              <Button onClick={signIn}>
+              <Button >
                 Sign in
               </Button>
           )}
@@ -67,7 +64,7 @@ const Navbar = () => {
               items,
             }}
           >
-             <img src={user.image} className="cursor-pointer w-9 h-9 rounded-full"></img>
+             <img  className="cursor-pointer w-9 h-9 rounded-full"></img>
           </Dropdown>
             } 
         </div>

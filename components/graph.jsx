@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -8,18 +9,11 @@ import {
   Tooltip,
 } from "recharts";
 
-const data = [
-  { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Page B", uv: 300, pv: 4567, amt: 2400 },
-  { name: "Page C", uv: 500, pv: 1398, amt: 2400 },
-  { name: "Page D", uv: 200, pv: 9800, amt: 2400 },
-  { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Page B", uv: 300, pv: 4567, amt: 2400 },
-  { name: "Page C", uv: 500, pv: 1398, amt: 2400 },
-  { name: "Page D", uv: 200, pv: 9800, amt: 2400 },
-];
 
-const graph = () => {
+
+const graph = ({temperature, tds, turbidity, pH}) => {
+
+
   return (
     <div className="grid grid-cols-2 grid-rows-2 gap-4">
       <div className="p-10">
@@ -27,8 +21,8 @@ const graph = () => {
         <LineChart
           width={500}
           height={200}
-          data={data}
-          syncId="anyId"
+          data={pH}
+          syncId="1"
           margin={{
             top: 10,
             right: 30,
@@ -40,7 +34,7 @@ const graph = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Line type="monotone" dataKey="pH" stroke="#8884d8" fill="#8884d8" />
         </LineChart>
       </div>
 
@@ -49,8 +43,8 @@ const graph = () => {
         <LineChart
           width={500}
           height={200}
-          data={data}
-          syncId="anyId"
+          data={temperature}
+          syncId="2"
           margin={{
             top: 10,
             right: 30,
@@ -62,7 +56,7 @@ const graph = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Line type="monotone" dataKey="Temperature" stroke="#8884d8" fill="#8884d8" />
         </LineChart>
       </div>
 
@@ -71,8 +65,8 @@ const graph = () => {
         <LineChart
           width={500}
           height={200}
-          data={data}
-          syncId="anyId"
+          data={tds}
+          syncId="3"
           margin={{
             top: 10,
             right: 30,
@@ -84,7 +78,7 @@ const graph = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Line type="monotone" dataKey="TDS" stroke="#8884d8" fill="#8884d8" />
         </LineChart>
       </div>
 
@@ -93,8 +87,8 @@ const graph = () => {
         <LineChart
           width={500}
           height={200}
-          data={data}
-          syncId="anyId"
+          data={turbidity}
+          syncId="4"
           margin={{
             top: 10,
             right: 30,
@@ -106,7 +100,7 @@ const graph = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Line type="monotone" dataKey="Turbidity" stroke="#8884d8" fill="#8884d8" />
         </LineChart>
       </div>
     </div>
